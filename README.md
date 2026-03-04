@@ -26,7 +26,7 @@ If enabled, ghosts will automatically be created for the selected rush mode. Eac
 ## Important Notes
 - This mod uses [NeonLite](https://github.com/Faustas156/NeonLite)'s built-in anti-cheat, so make sure you have the latest version installed.
 - These rushes are just for fun and have not been extensively tested for balance/playability.
-- 
+
 ## Installation
 1. Install [NeonLite](https://github.com/Faustas156/NeonLite) by following its installation instructions.
 2. Download [the latest MoreRushes release](https://github.com/joeyexists/MoreRushes/releases/latest).
