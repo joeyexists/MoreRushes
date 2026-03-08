@@ -3,7 +3,7 @@ using UniverseLib.Input;
 using MoreRushes.Rush;
 using MoreRushes.UI;
 
-[assembly: MelonInfo(typeof(MoreRushes.MoreRushes), "MoreRushes", "1.0.0", "joeyexists", null)]
+[assembly: MelonInfo(typeof(MoreRushes.MoreRushes), "MoreRushes", "1.1.0", "joeyexists", null)]
 [assembly: MelonGame("Little Flag Software, LLC", "Neon White")]
 [assembly: MelonColor(214, 111, 49, 255)]
 

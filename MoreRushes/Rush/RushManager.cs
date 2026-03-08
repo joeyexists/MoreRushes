@@ -223,8 +223,12 @@ namespace MoreRushes.Rush
 
             foreach (var vendor in Object.FindObjectsOfType<CardVendor>())
             {
-                var startPos = Patching.CardVendor_StartPositionRef(vendor);
-                var newCard = GetCardForActiveRush(startPos);
+                var vendorStartPos = Patching.CardVendor_StartPositionRef(vendor);
+
+                if (!ShouldReplaceCard(vendor._cardData, vendorStartPos))
+                    continue;
+
+                var newCard = GetCardForActiveRush(vendorStartPos);
                 vendor.SetCard(newCard);
                 if (vendor.stock == 0)
                     vendor._uiCard.UICards[0].FadeOutBackground();
@@ -233,19 +237,23 @@ namespace MoreRushes.Rush
 
         public static void TryReplaceCardOnPickupSpawn(ref PlayerCardData card, Vector3 position)
         {
-            var hashPos = RushPositionContext.OverrideHashPosition ?? position;
+            var vendorPos = RushPositionContext.OverrideHashPosition ?? position;
 
-            if (!ShouldReplaceCard(card, hashPos)) 
+            if (!ShouldReplaceCard(card, vendorPos)) 
                 return;
 
-            var newCard = GetCardForActiveRush(hashPos);
+            var newCard = GetCardForActiveRush(vendorPos);
             if (newCard != null) 
                 card = newCard;
         }
 
         public static void ReplaceVendorCardOnSetup(CardVendor vendor)
         {
-            var newCard = GetCardForActiveRush(vendor.transform.position);
+            var hashPos = vendor.transform.position;
+            if (!ShouldReplaceCard(vendor._cardData, hashPos))
+                return;
+
+            var newCard = GetCardForActiveRush(hashPos);
             if (newCard != null) 
                 vendor._cardData = newCard;
         }
